@@ -4,8 +4,8 @@
       <img src="../assets/logo.png" alt="">
     </div>
     <div class="login-form">
-      <mt-field label="账号" placeholder="请输入用户名" v-model="username"></mt-field>
-      <mt-field label="密码" placeholder="请输入邮箱" type="password" v-model="email"></mt-field>
+      <mt-field label="账号" placeholder="请输入账号" v-model="username"></mt-field>
+      <mt-field label="密码" placeholder="请输入密码" type="password" v-model="email"></mt-field>
       <div class="tips"></div>
     </div>
     <mt-button class="login-btn" type="primary" >登 录</mt-button>

@@ -10,15 +10,22 @@
                 <i class="icon-reorder"></i>
             </mt-button>
         </div>
+        <div class="movie-type">
+            <ul class="type-item clearfix">
+                <li v-for="(tab,index) in tabsName">
+                    <a href="#" class="tab-link" @click="tabsSwitch(index)" v-bind:class="{active:tab.isActive}">{{tab.name}}</a>
+                </li>
+            </ul>
+        </div>
         <div class="type">
             <div class="item">
                 <div></div>
             </div>
         </div>
-        <div class="content clearfix">
-            <div class="item">
-                <img src="../assets/logo.png" alt="">
-                <div>电影名称</div>
+        <ul class="content clearfix">
+            <li class="item" v-for="item in moveData">
+                <img src="/static/image/img-default.png" alt="">
+                <div>战狼3</div>
                 <div class="star">
                     <i class="icon-star-empty"></i>
                     <i class="icon-star-empty"></i>
@@ -26,23 +33,10 @@
                     <i class="icon-star-empty"></i>
                     <i class="icon-star-empty"></i>
                     <i class="icon-star-empty"></i>
-                    <span>9.2</span>
+                    <span>9.5</span>
                 </div>
-            </div>
-            <div class="item">
-                <img src="../assets/logo.png" alt="">
-            </div>
-            <div class="item">
-                <img src="../assets/logo.png" alt="">
-            </div>
-            <div class="item">4</div>
-            <div class="item">5</div>
-            <div class="item">6</div>
-            <div class="item">7</div>
-        </div>
-        <div class="test">
-
-        </div>
+            </li>
+        </ul>
     </div>
 </template>
 <script>
@@ -50,25 +44,65 @@
         name: 'HelloWorld',
         data () {
             return {
-                value: '',
-                username: '',
-                email: ''
+                selected: '1',
+                selected2: '22',
+                moveData: [1,2,3,4,5,6,7,8,9,10],
+                tabsName: [{
+                    name: "HTML",
+                    isActive: true
+                }, {
+                    name: "CSS",
+                    isActive: false
+                }, {
+                    name: "Vue",
+                    isActive: false
+                }],
             }
         },
-        methods: {}
+        methods: {
+            tabsSwitch: function(tabIndex) {
+                /*var tabCardCollection = document.querySelectorAll(".tab-card"),
+                    len = tabCardCollection.length;
+
+                for(var i = 0; i < len; i++) {
+                    tabCardCollection[i].style.display = "none";
+                    this.tabsName[i].isActive = false;
+                }*/
+                for(var i = 0; i < this.tabsName.length; i++) {
+                    //tabCardCollection[i].style.display = "none";
+                    this.tabsName[i].isActive = false;
+                }
+                this.tabsName[tabIndex].isActive = true;
+                //tabCardCollection[tabIndex].style.display = "block";
+            }
+
+        }
     }
 </script>
 
 <style lang="scss" scoped rel="stylesheet/scss">
-    $background: #ebebeb;
-    .test{
-        background: blue;
-        height: 1rem;
-        width: 15rem;
-    }
+    /*
+    width: 375 / 15 => 1rem = 25px
+    1px == 0.04 rem
+    */
+
+    $background: #f7f7f7;
     .search {
         background: $background;
-        padding: 10px 5px;
+        padding: 0.4rem 0.2rem;
+    }
+    .movie-type{
+        background: #fff;
+        .type-item{
+            li{
+                float: left;
+                width: 3rem;
+                font-size: .5rem;
+            }
+        }
+        .tab-link.active{
+            background: #CCCCCC;
+        }
     }
 
     .content {
@@ -76,21 +110,22 @@
         margin-top: 15px;
         background: $background;
 
-    .item {
-        text-align: left;
-        font-size: 12px;
-        box-sizing: border-box;
-        float: left;
-        width: 5rem;
-        height: 200px;
-        border: 1px solid #0000FF;
-
-    img {
-        width: 80%;
-        margin: auto;
+        .item {
+            text-align: left;
+            font-size: 0.5rem;
+            box-sizing: border-box;
+            float: left;
+            width: 5rem;
+            padding: .3rem;
+            img {
+                width: 100%;
+                margin: auto;
+            }
+            .star{
+                color:#fca202;
+            }
+        }
     }
 
-    }
-    }
 </style>
 

@@ -1,5 +1,5 @@
 <template>
-    <div id="home">
+    <div class="container">
         <div class="search">
             <span>电影</span>
             <input type="text">
@@ -37,6 +37,8 @@
                 </div>
             </li>
         </ul>
+
+        <footer></footer>
     </div>
 </template>
 <script>
@@ -59,6 +61,9 @@
                 }],
             }
         },
+        mounted(){
+           this.getMovieType();
+        },
         methods: {
             tabsSwitch: function(tabIndex) {
                 /*var tabCardCollection = document.querySelectorAll(".tab-card"),
@@ -74,6 +79,14 @@
                 }
                 this.tabsName[tabIndex].isActive = true;
                 //tabCardCollection[tabIndex].style.display = "block";
+            },
+            getMovieType: function(){
+                var url = 'http://yousdk.com:12000/api/cinema/channel/category/?channel=1';
+                this.$axios.post(url).then((res) => {
+                    console.log(res.data);
+                }).catch(function (error) {
+                    console.log(error);
+                });
             }
 
         }

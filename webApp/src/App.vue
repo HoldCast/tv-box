@@ -17,6 +17,9 @@
             <router-link to="/download">
                 <mt-button size="small">download</mt-button>
             </router-link>
+            <router-link to="/user">
+                <mt-button size="small">user</mt-button>
+            </router-link>
         </div>
 
     </div>

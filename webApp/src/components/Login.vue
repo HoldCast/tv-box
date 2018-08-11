@@ -10,7 +10,7 @@
             <div class="tips"></div>
         </div>
         <div class="foot-btn">
-            <mt-button class="btn" type="primary">登 录</mt-button>
+            <mt-button @click="login" class="btn" type="primary">登 录</mt-button>
         </div>
     </div>
 </template>
@@ -23,7 +23,11 @@
                 email: ''
             }
         },
-        methods: {}
+        methods: {
+            login: function () {
+                this.$router.push('/home');
+            }
+        }
     }
 </script>
 

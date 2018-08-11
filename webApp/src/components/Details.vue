@@ -23,7 +23,7 @@
                             <i class="icon-star"></i>
                             <i class="icon-star"></i>
                             <i class="icon-star-empty"></i>
-                            <span class="grade">9.5</span>
+                            <i class="grade">9.5</i>
                         </span>
                     </div>
                     <div class="item">
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="btn">
-                <mt-button type="primary" round >下载</mt-button>
+                <mt-button type="primary" plain>下载</mt-button>
                 <!--<mt-button disabled type="default">下载中/已下载</mt-button>-->
             </div>
             <div class="details">
@@ -84,7 +84,7 @@
             }
         },
         mounted(){
-           this.getMovieType();
+           //this.getMovieType();
         },
         methods: {
             tabsSwitch: function(tabIndex) {
@@ -153,11 +153,13 @@
             margin-top: 0.8rem;
             font-size: .55rem;
             .title{
-                font-size: 0.75rem;
+                font-size: 0.68rem;
                 margin-bottom: .1rem;
             }
             p{
                 color: #555;
+                font-size:0.5rem;
+                letter-spacing:.0.05rem;
             }
         }
     }

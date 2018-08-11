@@ -33,6 +33,10 @@ export default new Router({
         {
             path: '/download',
             component: resolve => require(['../components/DownLoad'], resolve),
+        },
+        {
+            path: '/user',
+            component: resolve => require(['../components/User'], resolve),
         }
     ]
 })

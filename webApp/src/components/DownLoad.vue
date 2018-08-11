@@ -12,11 +12,67 @@
         <div class="content">
             <div class="btn">
                 <mt-button class="first" size="small" type="primary" plain>全部暂停</mt-button>
-                <!--<mt-button type="default">全部开始</mt-button>-->
-                <mt-button size="small" type="primary" plain>编 辑</mt-button>
+                <mt-button size="small" type="primary" plain>编辑</mt-button>
+            </div>
+            <div class="btn2">
+                <mt-button class="first" size="small" type="primary" plain>删除</mt-button>
+                <mt-button class="first" size="small" type="primary" plain>全选</mt-button>
+                <mt-button size="small" type="primary" plain>取消</mt-button>
             </div>
             <div class="down-info">
                 <div class="item clearfix">
+                    <img class="left" src="/static/image/img-default.png" alt="">
+                    <div class="info left">
+                        <div class="name">急速蜗牛</div>
+                        <div class="process">
+                            <mt-progress type="danger" :value="80"></mt-progress>
+                        </div>
+                        <div class="speed clearfix">
+                            <div class="left">
+                                256 kB/s
+                            </div>
+                            <div class="right">
+                                186.5 M
+                            </div>
+                        </div>
+                        <div class="status">
+                            正在下载
+                        </div>
+                        <div class="handle">
+                            <mt-button size="small" type="primary" plain>暂停</mt-button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item clearfix">
+                    <div class="select left">
+                        <i class="icon-ok-circle"></i>
+                    </div>
+                    <img class="left" src="/static/image/img-default.png" alt="">
+                    <div class="info left">
+                        <div class="name">急速蜗牛</div>
+                        <div class="process">
+                            <mt-progress type="danger" :value="80"></mt-progress>
+                        </div>
+                        <div class="speed clearfix">
+                            <div class="left">
+                                256 kB/s
+                            </div>
+                            <div class="right">
+                                186.5 M
+                            </div>
+                        </div>
+                        <div class="status">
+                            正在下载
+                        </div>
+                        <div class="handle">
+                            <mt-button size="small" type="primary" plain>暂停</mt-button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item clearfix">
+                    <div class="select left">
+                        <i class="icon-ok-sign"></i>
+                    </div>
                     <img class="left" src="/static/image/img-default.png" alt="">
                     <div class="info left">
                         <div class="name">急速蜗牛</div>
@@ -64,7 +120,7 @@
             }
         },
         mounted() {
-            this.getMovieType();
+            //this.getMovieType();
         },
         methods: {
             tabsSwitch: function (tabIndex) {
@@ -110,14 +166,35 @@
                 margin-right:0.3rem;
             }
         }
+        .btn2 {
+            .mint-button {
+                width: 4.2rem;
+            }
+            .mint-button.first{
+                margin-right:0.28rem;
+            }
+        }
         .down-info {
 
             .item{
                 margin-top: 0.5rem;
                 padding-bottom: .5rem;
                 border-bottom:1px solid #ccc;
+                .select{
+                    width: 1rem;
+                    margin-top: 1.5rem;
+                    margin-right: .2rem;
+                    font-size: 1rem;
+                    i.icon-ok-sign{
+                        color: #CCCCCC;
+                    }
+                    i.icon-ok-circle{
+                        color: #27a2ff;
+                    }
+
+                }
                 img{
-                    width: 4rem;
+                    width: 3.5rem;
                     margin-right: .6rem;
                 }
                 .info{

@@ -9,22 +9,21 @@
                 <mt-button icon="more" slot="right"></mt-button>
             </mt-header>
         </div>
-        <div class="content ">
+        <div class="content">
             <div class="movie-info clearfix">
                 <div class="img left">
                     <img src="/static/image/img-default.png" alt="">
                 </div>
                 <div class="info left">
                     <div class="item">
-                        <span class="name">战狼2</span>
+                        <span class="name">战狼2 </span>
                         <span class="star">
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
                             <i class="icon-star-empty"></i>
-                            <i class="icon-star-empty"></i>
-                            <i class="icon-star-empty"></i>
-                            <i class="icon-star-empty"></i>
-                            <i class="icon-star-empty"></i>
-                            <i class="icon-star-empty"></i>
-                            <span>9.5</span>
+                            <span class="grade">9.5</span>
                         </span>
                     </div>
                     <div class="item">
@@ -32,12 +31,12 @@
                         <span class="val">2017年</span>
                     </div>
                     <div class="item">
-                        <span class="pre">年份：</span>
-                        <span class="val">2017年</span>
+                        <span class="pre">地区：</span>
+                        <span class="val">中国大陆</span>
                     </div>
                     <div class="item">
-                        <span class="pre">年份：</span>
-                        <span class="val">2017年</span>
+                        <span class="pre">导演：</span>
+                        <span class="val">吴京</span>
                     </div>
                     <div class="item">
                         <span class="pre">年份：</span>
@@ -50,7 +49,7 @@
                 </div>
             </div>
             <div class="btn">
-                <mt-button type="default">下载</mt-button>
+                <mt-button type="primary" round >下载</mt-button>
                 <!--<mt-button disabled type="default">下载中/已下载</mt-button>-->
             </div>
             <div class="details">
@@ -124,12 +123,11 @@
     1px == 0.04 rem
     */
     .content{
-        width: 13rem;
-        margin:55px auto 0;
+
         .movie-info{
             .img{
-                width: 4rem;
-                margin-right: .3rem;
+                width: 4.5rem;
+                margin-right: .35rem;
                 img{
                     width: 100%;
                 }
@@ -137,19 +135,30 @@
             .info{
                 width: 8rem;
                 .item{
-                    margin-top: .1rem;
+                    margin-top: .15rem;
+                    .name{
+                        font-size:.6rem;
+                        margin-right: .2rem;
+                    }
                 }
             }
         }
         .btn{
-            margin-top: .5rem;
+            margin-top: .45rem;
             .mint-button{
                 width: 100%;
             }
         }
         .details{
-            margin-top: 1rem;
+            margin-top: 0.8rem;
             font-size: .55rem;
+            .title{
+                font-size: 0.75rem;
+                margin-bottom: .1rem;
+            }
+            p{
+                color: #555;
+            }
         }
     }
 </style>

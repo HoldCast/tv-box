@@ -1,5 +1,14 @@
 <template>
     <div class="container">
+        <div class="header">
+            <!--<mt-header fixed title="fixed top"></mt-header>-->
+            <mt-header fixed title="影片详情">
+                <router-link to="/" slot="left">
+                    <mt-button icon="back"></mt-button>
+                </router-link>
+                <mt-button icon="more" slot="right"></mt-button>
+            </mt-header>
+        </div>
         <div class="search">
             <span>电影</span>
             <input type="text">
@@ -27,12 +36,12 @@
                 <img src="/static/image/img-default.png" alt="">
                 <div>战狼3</div>
                 <div class="star">
-                    <i class="icon-star-empty"></i>
-                    <i class="icon-star-empty"></i>
-                    <i class="icon-star-empty"></i>
-                    <i class="icon-star-empty"></i>
-                    <i class="icon-star-empty"></i>
-                    <i class="icon-star-empty"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
                     <span>9.5</span>
                 </div>
             </li>
@@ -52,13 +61,32 @@
                 tabsName: [{
                     name: "HTML",
                     isActive: true
-                }, {
+                },
+                {
                     name: "CSS",
                     isActive: false
-                }, {
+                },
+                {
                     name: "Vue",
                     isActive: false
-                }],
+                },
+                    {
+                        name: "Vue1",
+                        isActive: false
+                    },
+                    {
+                        name: "Vue2",
+                        isActive: false
+                    },
+                    {
+                        name: "Vue3",
+                        isActive: false
+                    },
+                    {
+                        name: "Vue4",
+                        isActive: false
+                    }
+                ],
             }
         },
         mounted(){
@@ -101,10 +129,12 @@
 
     $background: #f7f7f7;
     .search {
+        margin-top:40px;
         background: $background;
         padding: 0.4rem 0.2rem;
     }
     .movie-type{
+        overflow: auto;
         background: #fff;
         .type-item{
             li{
@@ -119,17 +149,17 @@
     }
 
     .content {
+        /*background: $background;*/
+        width:14.5rem;
         margin: auto;
-        margin-top: 15px;
-        background: $background;
-
         .item {
             text-align: left;
             font-size: 0.5rem;
             box-sizing: border-box;
             float: left;
-            width: 5rem;
-            padding: .3rem;
+            width: 33.3333%;
+            padding: .4rem;
+            /*margin-right:0.5rem;*/
             img {
                 width: 100%;
                 margin: auto;

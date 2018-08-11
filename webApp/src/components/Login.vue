@@ -30,7 +30,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped rel="stylesheet/scss">
     .logo {
-        margin-top: 25%;
+        margin-top: 1rem;
         img {
             width: 35%;
         }

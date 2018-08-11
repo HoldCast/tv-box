@@ -11,19 +11,31 @@
         </div>
         <div class="content">
             <div class="btn">
-                <mt-button size="small" type="default">全部暂停</mt-button>
+                <mt-button class="first" size="small" type="primary" plain>全部暂停</mt-button>
                 <!--<mt-button type="default">全部开始</mt-button>-->
-                <mt-button size="small" type="default">编辑</mt-button>
+                <mt-button size="small" type="primary" plain>编 辑</mt-button>
             </div>
             <div class="down-info">
                 <div class="item clearfix">
-                    <img src="/static/image/img-default.png" alt="">
-                    <div class="info">
+                    <img class="left" src="/static/image/img-default.png" alt="">
+                    <div class="info left">
                         <div class="name">急速蜗牛</div>
-                        <div class="process"></div>
-                        <div class="state"></div>
+                        <div class="process">
+                            <mt-progress type="danger" :value="80"></mt-progress>
+                        </div>
+                        <div class="speed clearfix">
+                            <div class="left">
+                                256 kB/s
+                            </div>
+                            <div class="right">
+                                186.5 M
+                            </div>
+                        </div>
+                        <div class="status">
+                            正在下载
+                        </div>
                         <div class="handle">
-
+                            <mt-button size="small" type="primary" plain>暂停</mt-button>
                         </div>
                     </div>
                 </div>
@@ -86,24 +98,55 @@
 <style lang="scss" scoped rel="stylesheet/scss">
     /*
     width: 375 / 15
-
     1rem = 25px
     1px == 0.04 rem
     */
     .content {
-        width: 13rem;
-        margin: 55px auto 0;
         .btn {
-            text-align: center;
-            margin-top: .5rem;
             .mint-button {
-                width: 45%;
-                margin: 0 .2rem;
+                width: 6.5rem;
+            }
+            .mint-button.first{
+                margin-right:0.3rem;
             }
         }
-        .details {
-            margin-top: 1rem;
-            font-size: .55rem;
+        .down-info {
+
+            .item{
+                margin-top: 0.5rem;
+                padding-bottom: .5rem;
+                border-bottom:1px solid #ccc;
+                img{
+                    width: 4rem;
+                    margin-right: .6rem;
+                }
+                .info{
+                    margin-top: .2rem;
+                    width: 8rem;
+                    .name{
+                        font-size: 0.6rem;
+                        font-weight: bold;
+                    }
+                    .mt-progress{
+                        height: 0.5rem;
+                    }
+                    .status{
+                        margin-top: .5rem;
+                        color: #626262;
+                    }
+                    .handle{
+                        margin-top: 0.2rem;
+                        .mint-button{
+                            height: 1rem;
+                            line-height: 1rem;
+                            width: 3rem;
+                            font-size: .5rem;
+                            padding: 0 .5rem;
+                        }
+                    }
+                }
+            }
+
         }
     }
 </style>

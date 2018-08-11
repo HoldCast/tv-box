@@ -1,3 +1,6 @@
+
+/*样式初始化*/
+
 html,body,#app{
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -50,3 +53,16 @@ h3,h4,p{
     clear: both;
 }
 
+/*公共样式*/
+i.icon-star,.grade{
+    color:#faab29;
+}
+i.icon-star-empty{
+    color:#e6e6e6;
+}
+
+
+.container .content{
+    width: 13.5rem;
+    margin:55px auto 0;
+}

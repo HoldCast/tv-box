@@ -9,43 +9,52 @@
                 <mt-button icon="more" slot="right"></mt-button>
             </mt-header>
         </div>
-        <div class="search">
-            <span>电影</span>
-            <input type="text">
-            <mt-button size="small">
-                <i class="icon-search"></i>
-            </mt-button>
-            <mt-button size="small">
-                <i class="icon-reorder"></i>
-            </mt-button>
-        </div>
-        <div class="movie-type">
-            <ul class="type-item clearfix">
-                <li v-for="(tab,index) in tabsName">
-                    <a href="#" class="tab-link" @click="tabsSwitch(index)" v-bind:class="{active:tab.isActive}">{{tab.name}}</a>
+        <div class="content">
+            <div class="search">
+                <span>电影</span>
+                <input type="text">
+                <mt-button size="small">
+                    <i class="icon-search"></i>
+                </mt-button>
+                <mt-button size="small">
+                    <i class="icon-reorder"></i>
+                </mt-button>
+            </div>
+            <div class="movie-type">
+                <ul class="type-item clearfix">
+                    <li v-for="(tab,index) in tabsName" class="tab-link" @click="tabsSwitch(index)" v-bind:class="{active:tab.isActive}">{{tab.name}}
+                    </li>
+                </ul>
+            </div>
+            <div class="movie-type">
+                <ul class="type-item clearfix">
+                    <li v-for="(tab,index) in tabsName" class="tab-link" @click="tabsSwitch(index)" v-bind:class="{active:tab.isActive}">{{tab.name}}
+                    </li>
+                </ul>
+            </div>
+            <div class="movie-type">
+                <ul class="type-item clearfix">
+                    <li v-for="(tab,index) in tabsName" class="tab-link" @click="tabsSwitch(index)" v-bind:class="{active:tab.isActive}">{{tab.name}}
+                    </li>
+                </ul>
+            </div>
+            <ul class="clearfix movie-content">
+                <li class="item" v-for="item in moveData">
+                    <img src="/static/image/img-default.png" alt="">
+                    <div>战狼3</div>
+                    <div class="star">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <span>9.5</span>
+                    </div>
                 </li>
             </ul>
+
         </div>
-        <div class="type">
-            <div class="item">
-                <div></div>
-            </div>
-        </div>
-        <ul class="content clearfix">
-            <li class="item" v-for="item in moveData">
-                <img src="/static/image/img-default.png" alt="">
-                <div>战狼3</div>
-                <div class="star">
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <span>9.5</span>
-                </div>
-            </li>
-        </ul>
 
         <footer></footer>
     </div>
@@ -59,23 +68,23 @@
                 selected2: '22',
                 moveData: [1,2,3,4,5,6,7,8,9,10],
                 tabsName: [{
-                    name: "HTML",
+                    name: "全部",
                     isActive: true
                 },
                 {
-                    name: "CSS",
+                    name: "爱情",
                     isActive: false
                 },
                 {
-                    name: "Vue",
+                    name: "动作",
                     isActive: false
                 },
                     {
-                        name: "Vue1",
+                        name: "悬疑",
                         isActive: false
                     },
                     {
-                        name: "Vue2",
+                        name: "惊悚",
                         isActive: false
                     },
                     {
@@ -128,44 +137,53 @@
     */
 
     $background: #f7f7f7;
-    .search {
-        margin-top:40px;
-        background: $background;
-        padding: 0.4rem 0.2rem;
-    }
-    .movie-type{
-        overflow: auto;
-        background: #fff;
-        .type-item{
-            li{
-                float: left;
-                width: 3rem;
-                font-size: .5rem;
-            }
-        }
-        .tab-link.active{
-            background: #CCCCCC;
-        }
-    }
+
 
     .content {
         /*background: $background;*/
         width:14.5rem;
         margin: auto;
-        .item {
-            text-align: left;
-            font-size: 0.5rem;
-            box-sizing: border-box;
-            float: left;
-            width: 33.3333%;
-            padding: .4rem;
-            /*margin-right:0.5rem;*/
-            img {
-                width: 100%;
-                margin: auto;
+        .search {
+            margin-top:40px;
+            background: $background;
+            padding: 0.4rem 0.2rem;
+        }
+        .movie-type{
+            overflow: auto;
+            .type-item{
+                width: 30rem;
+
+                li{
+                    /*float: left;*/
+                    font-size: 0.6rem;
+                    text-align: center;
+                    display: inline-block;
+                    width: 2rem;
+                    padding:0.3rem 0;
+                }
             }
-            .star{
-                color:#fca202;
+            .tab-link.active{
+                color: red;
+                font-weight:bold;
+            }
+        }
+        .movie-content{
+            background: $background;
+            .item {
+                text-align: left;
+                font-size: 0.5rem;
+                box-sizing: border-box;
+                float: left;
+                width: 33.3333%;
+                padding: .4rem;
+                /*margin-right:0.5rem;*/
+                img {
+                    width: 100%;
+                    margin: auto;
+                }
+                .star{
+                    color:#fca202;
+                }
             }
         }
     }

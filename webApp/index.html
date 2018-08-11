@@ -22,6 +22,12 @@
       //html.style.fontSize = width / 16 + 'px';            //将屏幕分成16份：iphone5下（320/16） 1rem = 20px;
       //html.style.fontSize = width / 15 + 'px';          //将屏幕分成15份：iphone6下（375/15） 1rem = 25px;
       html.style.fontSize = width / 15 + 'px';          //将屏幕分成15份：iphone6s调试
+
+        //禁止浏览器的滑动事件
+        document.body.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        }, false);
+
     }
   </script>
 </html>

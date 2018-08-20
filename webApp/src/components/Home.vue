@@ -52,18 +52,18 @@
             </div>
         </div>
         <ul class="clearfix movie-content">
-            <li class="item" v-for="item in moveData">
-                <div class="movie-img">
+            <li class="item" v-for="(item,index) in movieData2">
+                <div class="movie-img" :style="{'background-image': 'url('+item.poster1+')'}" >
                     <div class="star">
                         <i class="icon-star"></i>
                         <i class="icon-star"></i>
                         <i class="icon-star"></i>
                         <i class="icon-star"></i>
                     </div>
-                    <div class="core">9.5</div>
+                    <div class="core">9.1</div>
                 </div>
                 <div class="movie-name">
-                    这个杀手不太冷
+                    {{item.title}}
                 </div>
             </li>
         </ul>
@@ -95,6 +95,7 @@
                 selected: '1',
                 selected2: '22',
                 moveData: [1,2,3,4,5,6,7,8,9,10],
+                movieData2: [],
                 tabsName: [{
                     name: "全部",
                     isActive: true
@@ -127,7 +128,7 @@
             }
         },
         mounted(){
-           //this.getMovieType();
+           this.getMovieType();
         },
         methods: {
             tabsSwitch: function(tabIndex) {
@@ -146,9 +147,11 @@
                 //tabCardCollection[tabIndex].style.display = "block";
             },
             getMovieType: function(){
-                var url = 'http://yousdk.com:12000/api/cinema/channel/category/?channel=1';
+                //http://yousdk.com:12000/api/cinema/channel/video/list/?channel=1&category=16&start=1&end=10
+                var url = '/api/api/cinema/channel/video/list/?channel=1&category=16&start=1&end=10';
                 this.$axios.post(url).then((res) => {
-                    console.log(res.data);
+                    this.movieData2 = res.data.data;
+                    console.log(this.movieData2);
                 }).catch(function (error) {
                     console.log(error);
                 });

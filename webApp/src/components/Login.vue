@@ -31,7 +31,7 @@
             login: function () {
                 //http://stbox-api.niiick.com/card/login
                 //this.$router.push('/home');
-                var url = '/api/card/login';
+                var url = '/login/card/login';
                 this.$axios.post(
                     url,
                     this.$qs.stringify({

@@ -2,14 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="static/Font-Awesome-3.2.1/css/font-awesome.css">
+      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="HandheldFriendly" content="true">
+      <link rel="stylesheet" href="static/Font-Awesome-3.2.1/css/font-awesome.css">
     <title>tv-box</title>
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
   <script>
     //初始化定义html的font-size;
     window.onload = function () {
@@ -23,10 +29,10 @@
       //html.style.fontSize = width / 15 + 'px';          //将屏幕分成15份：iphone6下（375/15） 1rem = 25px;
       html.style.fontSize = width / 15 + 'px';          //将屏幕分成15份：iphone6s调试
 
-        //禁止浏览器的滑动事件
+        /*//禁止浏览器的滑动事件
         document.body.addEventListener('touchmove', function (event) {
             event.preventDefault();
-        }, false);
+        }, false);*/
 
     }
   </script>

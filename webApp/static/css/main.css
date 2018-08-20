@@ -2,7 +2,7 @@
 /*样式初始化*/
 
 html,body,#app{
-  font-family: Helvetica, Arial, sans-serif;
+  font-family:PingFangSC-Regular, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -29,6 +29,12 @@ a{
 input{
     outline: none;
     vertical-align: middle;
+    border:0;
+}
+button{
+    outline: none;
+    vertical-align: middle;
+    border:0;
 }
 ul,li{
     margin: 0;
@@ -65,4 +71,60 @@ i.icon-star-empty{
 .container .content{
     width: 14.5rem;
     margin:55px auto;
+}
+
+/*渐变背景*/
+.change-bg{
+    background: -webkit-linear-gradient(left, #14D8BF, #5EAAFE ); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #14D8BF, #5EAAFE); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #14D8BF, #5EAAFE); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #14D8BF, #5EAAFE ); /* 标准的语法（必须放在最后） */
+}
+/*渐变背景*/
+.change-bg2{
+    background: -webkit-linear-gradient(left,#aaefe6,#c0defe); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right,#aaefe6,#c0defe); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right,#aaefe6,#c0defe); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right,#aaefe6,#c0defe); /* 标准的语法（必须放在最后） */
+}
+
+
+/*header*/
+.mint-header{
+    background: #FAFAFA;
+    color:#000;
+    font-size: 18px;
+
+}
+.mint-header i{
+    color:#4A4A4A;
+    font-size: 16px;
+}
+.top{
+    margin-top:40px;
+}
+
+/*
+    width: 375 / 15
+    1rem = 25px
+    1px == 0.04 rem
+    */
+.search{
+    position: relative;
+    height: 2rem;
+    margin-top:40px;
+}
+
+.footer{
+    height: 1.5rem;
+    line-height: 1.5rem;
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    text-align: center;
+    background: #f0f0f0;
+}
+.footer img{
+    height: .8rem;
+    margin: 0 2rem;
 }

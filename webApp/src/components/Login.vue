@@ -19,12 +19,14 @@
     </div>
 </template>
 <script>
+    import { Toast } from 'mint-ui';
     export default {
         name: 'HelloWorld',
         data() {
             return {
-                username: '2018081300001',
-                password: ''
+                username: '2018081400004',
+                password: '819302',
+
             }
         },
         methods: {
@@ -37,19 +39,23 @@
                     this.$qs.stringify({
                         cardnumber: this.username,
                         password: this.password,
-                        'account': 'BEMUU-H5',
-                        'password': 'CAWE8329423638KJDMVNXBSKDO9JSSD3NDE83545JDFNDNFB596231FF'
+                        deviceid: '007'
                     }),
                     {
                         headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'appid':'STB-2',
-                            'account': 'BEMUU-H5',
-                            'password': 'CAWE8329423638KJDMVNXBSKDO9JSSD3NDE83545JDFNDNFB596231FF'
+                            Authentication:'appid=STB-2,account=BEMUU-H5,skey=NDg5MDA1NzUxMzE0MzVkZjZmMGE2Y2NlMDU4YjUxMzVhNjQ3Y2RjNTg4NzVhZjVkMjc1NWUzYjkxNzNiOTM1MA==,nonce=123456,created=1430219361',
                         }
                     }
                 ).then((res) => {
-                    console.log(res.data);
+                    var data = res.data;
+                    if(data.code === 0){
+                        localStorage.setItem('userInfo',JSON.stringify(data.data));
+                        this.$router.push('/home');
+                    }else{
+                        Toast({
+                            message: data.msg
+                        });
+                    }
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -101,7 +107,8 @@
                 width: 100%;
                 border-radius: 2rem;
                 color:#FAFAFA;
-                font-size: 20px;
+                font-size: 0.9rem;
+                box-shadow: 0 4px 6px 0 rgba(33,35,38,0.12);
                 /*display: block;*/
 
             }

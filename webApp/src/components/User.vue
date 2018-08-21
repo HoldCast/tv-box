@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header">
             <!--<mt-header fixed title="fixed top"></mt-header>-->
-            <mt-header fixed title="个人中心">
+            <mt-header fixed title="我的">
                 <router-link to="/home" slot="left">
                     <mt-button icon="back"></mt-button>
                 </router-link>
@@ -11,22 +11,29 @@
         </div>
         <div class="content">
             <div class="item user">
-                <span class="pre">会员用户: </span>
+                <span class="pre">会员用户</span>
                 <span>
-                    201700001
+                    {{userInfo.cardnumber}}
+                </span>
+            </div>
+            <div class="item time">
+                <span class="pre">激活时间: </span>
+                <span>
+                    {{userInfo.activetimedesc}}
                 </span>
             </div>
             <div class="item time">
                 <span class="pre">到期时间: </span>
                 <span>
-                    2018年9月25日
+                    {{userInfo.overtimedesc}}
                 </span>
             </div>
+            <div class="line"></div>
             <div class="item logout">
-                <mt-button @click="logoutConfirm" size="small" class="btn" type="primary" plain>
+                <div @click="logoutConfirm" size="small" class="btn change-bg" type="primary" plain>
                     <i class="icon-off"></i>
                     退出登录
-                </mt-button>
+                </div>
             </div>
         </div>
     </div>
@@ -37,6 +44,7 @@
         name: 'HelloWorld',
         data () {
             return {
+                userInfo: JSON.parse(localStorage.getItem('userInfo')),
                 selected: '1',
                 selected2: '22',
                 moveData: [1,2,3,4,5,6,7,8,9,10],
@@ -54,6 +62,7 @@
         },
         mounted(){
            //this.getMovieType();
+            console.log(this.userInfo);
         },
         methods: {
             logoutConfirm: function () {
@@ -97,22 +106,42 @@
     1px == 0.04 rem
     */
     .content{
+        width:13.5rem;
+        margin-top: 6rem;
         .item{
-
+            text-align: center;
         }
         .user{
-            margin-top: 1rem;
-            font-size: .8rem;
+            font-family: PingFangSC-Medium;
+            color: #1A1A1A;
+            letter-spacing: .5px;
+            margin-bottom: .5rem;
+            font-size: 18px;
+            font-weight: bold;
         }
         .time{
-            margin-top: 0.5rem;
-            font-size: .6rem;
+            color:#999;
+            font-size: .55rem;
+        }
+        .line{
+            height: .04rem;
+            width:100%;
+            margin: 1rem auto;
+            background-image: linear-gradient(-270deg, rgba(200,215,255,0.00) 0%, #BECDFF 53%, rgba(151,174,255,0.00) 100%);
         }
         .logout{
-            margin-top: 1rem;
+
             text-align: center;
             .btn{
                 width:100%;
+                font-family: PingFangSC-Medium;
+                font-size: 0.9rem;
+                color: #FAFAFA;
+                letter-spacing: 1.67px;
+                height:2rem;
+                line-height:2rem;
+                border-radius: 1rem;
+                box-shadow: 0 4px 6px 0 rgba(33,35,38,0.12);
             }
         }
     }

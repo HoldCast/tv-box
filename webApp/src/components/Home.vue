@@ -20,21 +20,17 @@
         </div>
         <div class="filter-type">
             <div class="item clearfix">
-                <div class="pre left">类型:</div>
+                <div class="pre left">地区:</div>
                 <div class="val left">
-                    <span class="active type-item">全部</span>
-                    <span class="type-item">剧情</span>
-                    <span class="type-item">剧情</span>
-                    <span class="type-item">剧情</span>
-                    <span class="type-item">剧情</span>
-                    <span class="type-item">剧情</span>
-                    <span class="type-item">剧情</span>
+                    <span v-for="(item,index) in movieType" :key="index" class="type-item" @click="movieTypeSwitch(index,item.id)" v-bind:class="{active:item.isActive}">
+                        {{item.title}}
+                    </span>
                 </div>
             </div>
             <div class="item clearfix">
-                <div class="pre left">类型:</div>
+                <div class="pre left">类型2:</div>
                 <div class="val left">
-                    <span v-for="(tab,index) in tabsName" class="type-item" @click="tabsSwitch(index)" v-bind:class="{active:tab.isActive}">{{tab.name}}
+                    <span v-for="(tab,index) in tabsName" class="type-item" @click="tabsSwitch(index)" v-bind:class="{active:tab.isActive}">{{tab.title}}
                     </span>
                 </div>
             </div>
@@ -96,42 +92,44 @@
                 selected2: '22',
                 moveData: [1,2,3,4,5,6,7,8,9,10],
                 movieData2: [],
+                movieType: [],
                 tabsName: [{
-                    name: "全部",
+                    title: "全部",
                     isActive: true
                 },
                 {
-                    name: "爱情",
-                    isActive: false
+                    title: "爱情",
+                    //isActive: false
                 },
                 {
-                    name: "动作",
-                    isActive: false
+                    title: "动作",
+                    //isActive: false
                 },
-                    {
-                        name: "悬疑",
-                        isActive: false
-                    },
-                    {
-                        name: "惊悚",
-                        isActive: false
-                    },
-                    {
-                        name: "Vue3",
-                        isActive: false
-                    },
-                    {
-                        name: "Vue4",
-                        isActive: false
-                    }
+                {
+                    title: "悬疑",
+                    //isActive: false
+                },
+                {
+                    title: "惊悚",
+                    //isActive: false
+                }
                 ],
             }
         },
-        mounted(){
+        created(){
            this.getMovieType();
+           this.getMovie();
         },
         methods: {
-            tabsSwitch: function(tabIndex) {
+            movieTypeSwitch:function (tabIndex,id) {
+                for(var j = 0; j < this.movieType.length; j++) {
+                    this.movieType[j].isActive = false;
+                }
+                console.log(tabIndex,id);
+                this.movieType[tabIndex].isActive = true;
+                this.getMovie(id);
+            },
+            tabsSwitch: function(tabIndex,type) {
                 /*var tabCardCollection = document.querySelectorAll(".tab-card"),
                     len = tabCardCollection.length;
 
@@ -144,14 +142,31 @@
                     this.tabsName[i].isActive = false;
                 }
                 this.tabsName[tabIndex].isActive = true;
+
+
                 //tabCardCollection[tabIndex].style.display = "block";
+            },
+            getMovie: function(category=17){
+                //http://yousdk.com:12000/api/cinema/channel/video/list/?channel=1&category=16&start=1&end=10
+                var url = '/movie/api/cinema/channel/video/list/?channel=1&start=1&end=10&category=' + category;
+                this.$axios.post(url).then((res) => {
+                    this.movieData2 = res.data.data;
+                    //console.log(this.movieData2);
+                }).catch(function (error) {
+                    console.log(error);
+                });
             },
             getMovieType: function(){
                 //http://yousdk.com:12000/api/cinema/channel/video/list/?channel=1&category=16&start=1&end=10
-                var url = '/api/api/cinema/channel/video/list/?channel=1&category=16&start=1&end=10';
+                var url = '/movie/api/cinema/channel/category/?channel=1';
                 this.$axios.post(url).then((res) => {
-                    this.movieData2 = res.data.data;
-                    console.log(this.movieData2);
+                    var data = res.data.data;
+                    for(var i=0;i<data.length;i++){
+                        data[i].isActive = false;
+                    }
+                    data[0].isActive = true;
+                    this.movieType = data;
+                    console.log('type:',this.movieType);
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -216,10 +231,8 @@
                 line-height: 40px;
                 width: 12.5rem;
                 .type-item{
-                    /*display: inline-block;*/
-                    width: 2.5rem;
                     margin:0 .35rem;
-                    padding: 2px .3rem;
+                    padding: .15rem 0.1rem .15rem .3rem;
                     height: 1rem;
                     text-align: center;
                     border-radius: 6px;
@@ -246,7 +259,6 @@
                 border-radius: 4px;
                 font-size: 0.5rem;
                 box-sizing: border-box;
-
                 width: 4.5rem;
                 height: 6rem;
                 .star,.core{

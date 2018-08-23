@@ -27,6 +27,7 @@ export default new Router({
             component: resolve => require(['../components/Home'], resolve),
         },
         {
+            name: 'details',
             path: '/details',
             component: resolve => require(['../components/Details'], resolve),
         },

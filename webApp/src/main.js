@@ -7,6 +7,10 @@ import Mint from 'mint-ui';
 import qs from 'qs';
 import axios from 'axios';
 Vue.use(Mint);
+import { InfiniteScroll } from 'mint-ui';
+Vue.use(InfiniteScroll);
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll);
 import 'mint-ui/lib/style.css';
 Vue.config.productionTip = false;
 Vue.prototype.$qs = qs;

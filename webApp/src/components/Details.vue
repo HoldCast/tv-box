@@ -2,50 +2,51 @@
     <div class="container">
         <div class="header">
             <mt-header fixed title="影片详情">
-                <router-link to="-1" slot="left">
-                    <mt-button icon="back"></mt-button>
+                <router-link to="/" slot="left">
+                    <mt-button icon="back" @click="backTo"></mt-button>
                 </router-link>
+
                 <mt-button icon="more" slot="right"></mt-button>
             </mt-header>
         </div>
         <div class="content">
             <div class="movie-info clearfix">
                 <div class="img left">
-                    <img src="/static/image/movie.png" alt="">
+                    <img src="/static/image/movie.png" :src="movieData.poster1" alt="">
                 </div>
                 <div class="info left">
                     <div class="item">
-                        <span class="name">战狼2 </span>
+                        <span class="name">{{movieData.title}} </span>
                     </div>
                     <div class="item">
                         <span class="star">
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="grade">9.5</i>
+                            <template v-for="(item,index) in star">
+                                <template v-if="index<movieData.stars">
+                                    <i class="icon-star" ></i>
+                                </template>
+                                <template v-else>
+                                    <i class="icon-star no" ></i>
+                                </template>
+                            </template>
+
+                            <i class="grade">{{movieData.rate}}</i>
                         </span>
                     </div>
                     <div class="item">
                         <span class="pre">年份：</span>
-                        <span class="val">2017年</span>
+                        <span class="val">{{movieData.release_date}}</span>
                     </div>
                     <div class="item">
                         <span class="pre">地区：</span>
-                        <span class="val">中国大陆</span>
+                        <span class="val">{{movieData.country}}</span>
                     </div>
                     <div class="item">
                         <span class="pre">导演：</span>
-                        <span class="val">吴京</span>
-                    </div>
-                    <div class="item">
-                        <span class="pre">年份：</span>
-                        <span class="val">2017年</span>
+                        <span class="val">{{movieData.director}}</span>
                     </div>
                     <div class="item">
                         <span class="pre">演员：</span>
-                        <span class="val">吴京、余男、斯科特·阿金斯、Kevin Lee、倪大红</span>
+                        <span class="val actors">{{movieData.actors}}</span>
                     </div>
                 </div>
             </div>
@@ -55,18 +56,16 @@
                 </span>
             </div>
 
-            <div class="btn">
+            <!--<div class="btn">
                 <span class="change-bg2 btn-span">
                     下载中
                 </span>
-            </div>
+            </div>-->
             <div class="details">
                 <div class="title">
                     影片简介：
                 </div>
-                <p>
-                    被开除军籍的冷锋（吴京饰演）本是因找寻龙小云（余男饰演）来到非洲，但是却突然被卷入一场非洲国家的叛乱。因为国家之间政治立场的关系，中国军队无法在非洲实行武装行动撤离华侨。而作为退伍老兵的冷锋无法忘记曾经为军人的使命，本来可以安全撤离的他毅然决然地回到了沦陷区，孤身一人带领身陷屠杀中的同胞和难民，展开生死逃亡。随着斗争的持续，体内的狼性逐渐复苏，最终闯入战乱区域，为同胞而战斗。
-                </p>
+                <p>{{movieData.description}}</p>
             </div>
         </div>
     </div>
@@ -76,25 +75,22 @@
         name: 'HelloWorld',
         data () {
             return {
-                selected: '1',
-                selected2: '22',
-                moveData: [1,2,3,4,5,6,7,8,9,10],
-                tabsName: [{
-                    name: "HTML",
-                    isActive: true
-                }, {
-                    name: "CSS",
-                    isActive: false
-                }, {
-                    name: "Vue",
-                    isActive: false
-                }],
+                movieId: '',
+                star: [1,2,3,4,5],
+                movieData: {},
             }
+        },
+        created(){
+            this.movieId =  this.$route.query.id;
+            this.getMovieDetails(this.movieId);
         },
         mounted(){
            //this.getMovieType();
         },
         methods: {
+            backTo: function () {
+                this.$router.go(-1);
+            },
             tabsSwitch: function(tabIndex) {
                 /*var tabCardCollection = document.querySelectorAll(".tab-card"),
                     len = tabCardCollection.length;
@@ -110,10 +106,13 @@
                 this.tabsName[tabIndex].isActive = true;
                 //tabCardCollection[tabIndex].style.display = "block";
             },
-            getMovieType: function(){
-                var url = 'http://yousdk.com:12000/api/cinema/channel/category/?channel=1';
+            getMovieDetails: function(movieId){
+                var url = '/movie/api/cinema/channel/video/?channel=1&id=' + movieId;
                 this.$axios.post(url).then((res) => {
-                    console.log(res.data);
+                    let movieDetails = res.data.data;
+                    this.movieData = movieDetails;
+                    this.movieData.release_date = movieDetails.release_date.substr(0,4);
+                    this.movieData.stars = Math.round(this.movieData.rate/2);
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -151,6 +150,18 @@
                         font-weight: bold;
                         margin-right: .2rem;
                     }
+                    .star{
+                        i.no{
+                            color: #e2e2e2;
+                        }
+                    }
+                    .actors{
+                        overflow : hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                    }
                 }
             }
         }
@@ -172,16 +183,16 @@
             margin-top: 0.8rem;
             font-size: .55rem;
             .title{
-                font-size: 12px;
+                font-size: .5rem;
                 color:#999;
                 margin-bottom: .2rem;
             }
             p{
                 font-family: PingFangSC-Regular;
-                font-size: 13px;
+                font-size: .5rem;
                 color: #1A1A1A;
                 letter-spacing: 0;
-                line-height: 20px;
+                line-height: .8rem;
                 text-indent: 1rem;
             }
         }

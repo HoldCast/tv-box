@@ -1,28 +1,31 @@
 
 /*样式初始化*/
-
 html,body,#app{
-  font-family:PingFangSC-Regular, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin: 0;
-  padding:0;
-  width:100%;
-  height:100%;
-  font-size: .5rem;
-    /*overflow-y: scroll;*/
+    font-family:"PingFangSC-Regular", "Helvetica", "Arial", "sans-serif";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    margin: 0;
+    padding:0;
+    width:100%;
+    height:100%;
+    font-size: .5rem;
+    /*overflow-y: scroll;
+     */
     -webkit-overflow-scrolling: touch;
 }
 body *{
-    /*-webkit-text-size-adjust: 100%;*/
-    /*-webkit-user-select: none;*/
+    /*-webkit-text-size-adjust: 100%;
+     */
+    /*-webkit-user-select: none;
+     */
 }
 a,button,input{
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 button,input{
-    /*-webkit-appearance: none;*/
+    /*-webkit-appearance: none;
+     */
     border-radius: 0;
 }
 a{
@@ -60,7 +63,6 @@ h3,h4,p{
     display: block;
     clear: both;
 }
-
 /*公共样式*/
 i.icon-star,.grade{
     color:#faab29;
@@ -68,61 +70,59 @@ i.icon-star,.grade{
 i.icon-star-empty{
     color:#e6e6e6;
 }
-
-
 .container .content{
     width: 14.5rem;
-    margin:55px auto;
+    margin:2.2rem auto;
 }
-
 /*渐变背景*/
 .change-bg{
-    background: -webkit-linear-gradient(left, #14D8BF, #5EAAFE ); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right, #14D8BF, #5EAAFE); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right, #14D8BF, #5EAAFE); /* Firefox 3.6 - 15 */
-    background: linear-gradient(to right, #14D8BF, #5EAAFE ); /* 标准的语法（必须放在最后） */
+    background: -webkit-linear-gradient(left, #14D8BF, #5EAAFE );
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #14D8BF, #5EAAFE);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #14D8BF, #5EAAFE);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #14D8BF, #5EAAFE );
+    /* 标准的语法（必须放在最后） */
 }
 /*渐变背景*/
 .change-bg2{
-    background: -webkit-linear-gradient(left,#aaefe6,#c0defe); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right,#aaefe6,#c0defe); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right,#aaefe6,#c0defe); /* Firefox 3.6 - 15 */
-    background: linear-gradient(to right,#aaefe6,#c0defe); /* 标准的语法（必须放在最后） */
+    background: -webkit-linear-gradient(left,#aaefe6,#c0defe);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right,#aaefe6,#c0defe);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right,#aaefe6,#c0defe);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right,#aaefe6,#c0defe);
+    /* 标准的语法（必须放在最后） */
 }
-
-
 /*header*/
 .mint-header{
     background: #FAFAFA;
     color:#000;
-    font-size: 18px;
+    font-size: 0.72rem;
     top:0;
-    /*position:fixed;*/
+    /*position:fixed;
+     */
     position:absolute;
     left:0;
-    height:38px;
-    line-height:38px;
+    height:1.52rem;
+    line-height:1.52rem;
     width:100%;
 }
 .mint-header i{
     color:#4A4A4A;
-    font-size: 16px;
+    font-size: 0.64rem;
 }
 .top{
-    margin-top:40px;
+    margin-top:1.6rem;
 }
-
-/*
-    width: 375 / 15
-    1rem = 25px
-    1px == 0.04 rem
-    */
+/* width: 375 / 15 1rem = 1rem 0.04rem == 0.04 rem */
 .search{
     position: relative;
     height: 2rem;
-    margin-top:40px;
+    margin-top:1.6rem;
 }
-
 .footer{
     height: 1.5rem;
     line-height: 1.5rem;

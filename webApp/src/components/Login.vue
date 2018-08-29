@@ -77,14 +77,13 @@
         margin-top: 3rem;
         .item{
             width:12rem;
-            margin:15px auto;
+            margin:0.6rem auto;
             position: relative;
             box-sizing: border-box;
-
             i{
                 position: absolute;
                 left:0;
-                bottom: 5px;
+                bottom: 0.2rem;
                 color:#DFDFDF;
                 font-size: .7rem;
             }
@@ -95,33 +94,30 @@
                 width: 100%;
                 outline: 0;
                 border:0;
-                border-bottom: 1px #F0F0F0 solid;
+                border-bottom: 0.04rem #F0F0F0 solid;
                 &::placeholder{
                     color: #ccc;
                     font-size: .5rem;
                 }
             }
             button{
-                margin-top: 15px;
+                margin-top: 0.6rem;
                 height: 2rem;
                 width: 100%;
                 border-radius: 2rem;
                 color:#FAFAFA;
                 font-size: 0.9rem;
-                box-shadow: 0 4px 6px 0 rgba(33,35,38,0.12);
-                /*display: block;*/
-
+                box-shadow: 0 0.16rem 0.24rem 0 rgba(33,35,38,0.12);
+                /*display: block;
+                 */
             }
         }
-
-
     }
     .login-form2 {
         text-align: center;
         margin: 15% auto;
         width: 100%;
     }
-
     .foot-btn {
         .btn{
             width:100%;
@@ -130,5 +126,6 @@
         margin:auto;
         width: 12rem;
     }
+
 </style>
 

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header">
             <!--<mt-header fixed title="fixed top"></mt-header>-->
-            <mt-header fixed title="下载中心">
+            <mt-header fixed title="影片下载">
                 <router-link to="/" slot="left">
                     <mt-button icon="back"></mt-button>
                 </router-link>
@@ -10,91 +10,43 @@
             </mt-header>
         </div>
         <div class="content">
+            <div class="tab">
+                <span @click="switchTab(1)" v-bind:class="{active:loading}">下载中</span>
+                <span @click="switchTab(2)" v-bind:class="{active:loaded}">已下载</span>
+            </div>
+            <div class="line"></div>
             <div class="btn">
-                <mt-button class="first" size="small" type="primary" plain>全部暂停</mt-button>
-                <mt-button size="small" type="primary" plain>编辑</mt-button>
+                <span>全部暂停</span>
+                <span>全部开始</span>
             </div>
-            <div class="btn2">
-                <mt-button class="first" size="small" type="primary" plain>删除</mt-button>
-                <mt-button class="first" size="small" type="primary" plain>全选</mt-button>
-                <mt-button size="small" type="primary" plain>取消</mt-button>
+            <div class="movie clearfix">
+                <div class="img left">
+                    <img src="" alt="">
+                </div>
+                <div class="info left">
+                    <div class="name">我不是药神</div>
+                    <div>
+                        <mt-progress :value="20" :bar-height="5"></mt-progress>
+                    </div>
+                    <div class="clearfix speed">
+                        <span class="left">1.4M/s</span>
+                        <span class="right">1.2GB</span>
+                    </div>
+                    <div class="status">
+                        正在下载
+                    </div>
+                    <div class="btn change-bg">
+                        暂停
+                    </div>
+                </div>
             </div>
-            <div class="down-info">
-                <div class="item clearfix">
-                    <img class="left" src="/static/image/img-default.png" alt="">
-                    <div class="info left">
-                        <div class="name">急速蜗牛</div>
-                        <div class="process">
-                            <mt-progress type="danger" :value="80"></mt-progress>
-                        </div>
-                        <div class="speed clearfix">
-                            <div class="left">
-                                256 kB/s
-                            </div>
-                            <div class="right">
-                                186.5 M
-                            </div>
-                        </div>
-                        <div class="status">
-                            正在下载
-                        </div>
-                        <div class="handle">
-                            <mt-button size="small" type="primary" plain>暂停</mt-button>
-                        </div>
-                    </div>
+            <div class="movie clearfix">
+                <div class="img left">
+                    <img src="" alt="">
                 </div>
-                <div class="item clearfix">
-                    <div class="select left">
-                        <i class="icon-ok-circle"></i>
-                    </div>
-                    <img class="left" src="/static/image/img-default.png" alt="">
-                    <div class="info left">
-                        <div class="name">急速蜗牛</div>
-                        <div class="process">
-                            <mt-progress type="danger" :value="80"></mt-progress>
-                        </div>
-                        <div class="speed clearfix">
-                            <div class="left">
-                                256 kB/s
-                            </div>
-                            <div class="right">
-                                186.5 M
-                            </div>
-                        </div>
-                        <div class="status">
-                            正在下载
-                        </div>
-                        <div class="handle">
-                            <mt-button size="small" type="primary" plain>暂停</mt-button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item clearfix">
-                    <div class="select left">
-                        <i class="icon-ok-sign"></i>
-                    </div>
-                    <img class="left" src="/static/image/img-default.png" alt="">
-                    <div class="info left">
-                        <div class="name">急速蜗牛</div>
-                        <div class="process">
-                            <mt-progress type="danger" :value="80"></mt-progress>
-                        </div>
-                        <div class="speed clearfix">
-                            <div class="left">
-                                256 kB/s
-                            </div>
-                            <div class="right">
-                                186.5 M
-                            </div>
-                        </div>
-                        <div class="status">
-                            正在下载
-                        </div>
-                        <div class="handle">
-                            <mt-button size="small" type="primary" plain>暂停</mt-button>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <div class="movie clearfix">
+
             </div>
         </div>
     </div>
@@ -104,6 +56,8 @@
         name: 'HelloWorld',
         data() {
             return {
+                loading:true,
+                loaded:false,
                 selected: '1',
                 selected2: '22',
                 moveData: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -123,20 +77,14 @@
             //this.getMovieType();
         },
         methods: {
-            tabsSwitch: function (tabIndex) {
-                /*var tabCardCollection = document.querySelectorAll(".tab-card"),
-                    len = tabCardCollection.length;
-
-                for(var i = 0; i < len; i++) {
-                    tabCardCollection[i].style.display = "none";
-                    this.tabsName[i].isActive = false;
-                }*/
-                for (var i = 0; i < this.tabsName.length; i++) {
-                    //tabCardCollection[i].style.display = "none";
-                    this.tabsName[i].isActive = false;
+            switchTab: function (type) {
+                if(type == 1){
+                    this.loading = true;
+                    this.loaded = false;
+                }else{
+                    this.loading = false;
+                    this.loaded = true;
                 }
-                this.tabsName[tabIndex].isActive = true;
-                //tabCardCollection[tabIndex].style.display = "block";
             },
             getMovieType: function () {
                 var url = 'http://yousdk.com:12000/api/cinema/channel/category/?channel=1';
@@ -158,72 +106,92 @@
     1px == 0.04 rem
     */
     .content {
-        .btn {
-            .mint-button {
-                width: 6.5rem;
+        margin: 2rem 0;
+        width:100%;
+        .tab{
+            width:200px;
+            margin:auto;
+            text-align: center;
+            span{
+                font-family: "PingFangSC-Medium";
+                margin:3px;
+                color:#000;
+                padding-bottom:2px;
+                font-size: 14px;
             }
-            .mint-button.first{
-                margin-right:0.3rem;
+            .active{
+                font-size: 18px;
+                color: #5EAAFE;
+                letter-spacing: 0;
+                border-bottom: 3px solid #5EAAFE;
+            }
+
+        }
+        .line{
+            margin:8px 0 8px 0;
+            border-top: 1px solid #F0F0F0;
+        }
+        .btn{
+            text-align: center;
+            >span{
+                font-size: 14px;
+                display: inline-block;
+                height: 28px;
+                line-height: 28px;
+                color:#000;
+                background: #f0f0f0;
+                width: 105px;
+                border-radius:4px;
+                padding: 4px 30px;
+                margin:0 5px;
             }
         }
-        .btn2 {
-            .mint-button {
-                width: 4.2rem;
+        .movie{
+            padding: 8px 0 8px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            .img{
+                background: url("/static/image/movie.png") no-repeat;
+                width: 95px;
+                background-size: cover;
+                height: 140px;
             }
-            .mint-button.first{
-                margin-right:0.28rem;
+            .info{
+                margin-left:10px;
+                width:200px;
+                .name{
+                    color: #000;
+                    font-size: 14px;
+                    margin-top: 5px;
+                }
+                .mt-progress{
+                    height: 20px;
+                }
+                .speed{
+                    font-size: 13px;
+                    color: #999999;
+                    margin-top:2px;
+                }
+                .status{
+                    font-size: 13px;
+                    color: #ccc;
+                    margin-top:5px;
+                }
+                .btn{
+                    margin-top:5px;
+                    color: #fff;
+                    width: 80px;
+                    text-align: center;
+                    -webkit-border-radius: 25px;
+                    -moz-border-radius: 25px;
+                    border-radius: 25px;
+                    height:25px;
+                    line-height:25px;
+
+                }
             }
         }
-        .down-info {
-
-            .item{
-                margin-top: 0.5rem;
-                padding-bottom: .5rem;
-                border-bottom:1px solid #ccc;
-                .select{
-                    width: 1rem;
-                    margin-top: 1.5rem;
-                    margin-right: .2rem;
-                    font-size: 1rem;
-                    i.icon-ok-sign{
-                        color: #CCCCCC;
-                    }
-                    i.icon-ok-circle{
-                        color: #27a2ff;
-                    }
-
-                }
-                img{
-                    width: 3.5rem;
-                    margin-right: .6rem;
-                }
-                .info{
-                    margin-top: .2rem;
-                    width: 8rem;
-                    .name{
-                        font-size: 0.6rem;
-                        font-weight: bold;
-                    }
-                    .mt-progress{
-                        height: 0.5rem;
-                    }
-                    .status{
-                        margin-top: .5rem;
-                        color: #626262;
-                    }
-                    .handle{
-                        margin-top: 0.2rem;
-                        .mint-button{
-                            height: 1rem;
-                            line-height: 1rem;
-                            width: 3rem;
-                            font-size: .5rem;
-                            padding: 0 .5rem;
-                        }
-                    }
-                }
-            }
-
+        .mt-progress-runway{
+            border-radius: 5px !important;
         }
     }
 </style>

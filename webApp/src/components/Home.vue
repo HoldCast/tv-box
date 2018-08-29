@@ -234,8 +234,8 @@
                 padding-left:1.1rem;
                 width: 10.5rem;
                 height: 1.2rem;
-                margin-top:7px;
-                border-radius: 8px;
+                margin-top:0.28rem;
+                border-radius: 0.32rem;
                 margin-left:.5rem;
                 background: #fafafa;
                 &::placeholder{
@@ -254,9 +254,9 @@
 
         .filter-type{
             .item{
-                height:40px;
-                line-height: 40px;
-                border-bottom: 1px solid #eaeaea;
+                height:1.6rem;
+                line-height: 1.6rem;
+                border-bottom: 0.04rem solid #eaeaea;
                 background: #FFFFFF;
                 box-shadow: 0 .1rem .2rem 0 rgba(0,0,0,0.10);
                 .pre{
@@ -268,8 +268,8 @@
                     white-space:nowrap;/* 不换行 */
                     overflow: auto;
                     /*white-space：nowrap;*/
-                    height:40px;
-                    line-height: 40px;
+                    height:1.6rem;
+                    line-height: 1.6rem;
                     width: 12.5rem;
                     .type-item{
                         text-align: center;
@@ -324,9 +324,9 @@
                 }
                 .movie-name{
                     font-family: PingFangSC-Regular;
-                    font-size: 12px;
+                    font-size: 0.48rem;
                     color: #1A1A1A;
-                    letter-spacing: 0.5px;
+                    letter-spacing: 0.02rem;
                     overflow: hidden;
                     width: 4.5rem;
                     text-overflow:ellipsis;
@@ -344,7 +344,7 @@
                 position: relative;
                 background: url("/static/image/movie.png") no-repeat;
                 background-size: cover;
-                border-radius: 4px;
+                border-radius: 0.16rem;
                 font-size: 0.5rem;
                 box-sizing: border-box;
                 width: 4.5rem;
@@ -354,7 +354,7 @@
                     position: absolute;
                     color:#FCB415;
                     bottom:.1rem;
-                    font-size: 12px;
+                    font-size: 0.48rem;
                 }
                 .star{
                     left:.2rem;
